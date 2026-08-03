@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#efeae6"/>
+  <g opacity="0.85">
+    <rect x="0" y="0" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="50" y="0" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="100" y="0" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="150" y="0" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="200" y="0" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="250" y="0" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="300" y="0" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="350" y="0" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="0" y="50" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="50" y="50" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="100" y="50" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="150" y="50" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="200" y="50" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="250" y="50" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="300" y="50" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="350" y="50" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="0" y="100" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="50" y="100" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="100" y="100" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="150" y="100" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="200" y="100" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="250" y="100" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="300" y="100" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="350" y="100" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="0" y="150" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="50" y="150" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="100" y="150" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="150" y="150" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="200" y="150" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="250" y="150" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="300" y="150" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="350" y="150" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="0" y="200" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="50" y="200" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="100" y="200" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="150" y="200" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="200" y="200" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="250" y="200" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="300" y="200" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="350" y="200" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="0" y="250" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="50" y="250" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="100" y="250" width="50" height="50" fill="#a8c5d4"/>
+    <rect x="150" y="250" width="50" height="50" fill="#f0d9a8"/>
+    <rect x="200" y="250" width="50" height="50" fill="#c8b8d4"/>
+    <rect x="250" y="250" width="50" height="50" fill="#e8a0a8"/>
+    <rect x="300" y="250" width="50" height="50" fill="#a8d4c4"/>
+    <rect x="350" y="250" width="50" height="50" fill="#a8c5d4"/>
+  </g>
+  <text x="200" y="155" text-anchor="middle" font-family="Comic Sans MS, Comic Neue, cursive" font-size="22" fill="#7a6f66">Replace with mosaic.png</text>
+</svg>

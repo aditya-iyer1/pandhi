@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Sample Album",
+    "cover": "images/albums/sample-cover.svg",
+    "photos": [
+      "images/albums/sample-1.svg",
+      "images/albums/sample-2.svg",
+      "images/albums/sample-cover.svg"
+    ]
+  },
+  {
+    "name": "More Memories",
+    "cover": "images/albums/sample-1.svg",
+    "photos": [
+      "images/albums/sample-2.svg",
+      "images/albums/sample-1.svg"
+    ]
+  }
+]

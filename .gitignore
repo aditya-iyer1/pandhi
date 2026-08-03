@@ -1,0 +1,12 @@
+node_modules/
+server/node_modules/
+server/local.db
+server/local.db-*
+server/.env
+.DS_Store
+*.log
+.env
+.vscode/
+.idea/
+# Large unused photo dump (not referenced by the site yet)
+puffage_photos/puffage_pics/

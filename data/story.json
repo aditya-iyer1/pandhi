@@ -1,0 +1,285 @@
+{
+  "titleLocked": "?????",
+  "titleUnlocked": "Our Story",
+  "mapStart": { "lat": 34.413, "lng": -119.855, "zoom": 15 },
+  "locations": [
+    {
+      "id": 1,
+      "name": "6667 Abrego",
+      "hint": "Where it all began",
+      "lat": 34.4124,
+      "lng": -119.8556,
+      "radiusM": 450,
+      "sticker": "🏠",
+      "game": "wordle",
+      "content": { "answer": "INDUS" }
+    },
+    {
+      "id": 2,
+      "name": "Corwin Pavilion",
+      "hint": "All Nighter",
+      "lat": 34.4126,
+      "lng": -119.848,
+      "radiusM": 400,
+      "sticker": "🌮",
+      "game": "hangman",
+      "content": { "phrase": "TACO BELL", "clue": "where did we get food" }
+    },
+    {
+      "id": 3,
+      "name": "6645 DP",
+      "hint": "Jungle Book",
+      "lat": 34.4095,
+      "lng": -119.8678,
+      "radiusM": 450,
+      "sticker": "📚",
+      "game": "crossword",
+      "content": {
+        "rows": 10,
+        "cols": 12,
+        "words": [
+          { "answer": "PBSKIDS", "clue": "fav tv channel growing up", "row": 0, "col": 0, "dir": "across" },
+          { "answer": "PIG", "clue": "pandhi", "row": 0, "col": 0, "dir": "down" },
+          { "answer": "WILDKRATTS", "clue": "goat tv show", "row": 2, "col": 2, "dir": "across" },
+          { "answer": "LEOPARD", "clue": "outfit", "row": 2, "col": 4, "dir": "down" },
+          { "answer": "VOMIT", "clue": "indus janitor", "row": 4, "col": 3, "dir": "across" },
+          { "answer": "MONKEY", "clue": "kothi", "row": 4, "col": 5, "dir": "down" }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "851 Camino Pescadero",
+      "hint": "My Home",
+      "lat": 34.4115,
+      "lng": -119.8608,
+      "radiusM": 450,
+      "sticker": "🛋️",
+      "game": "wordsearch",
+      "content": { "words": ["LAMP", "SOFA", "TRIPLE", "VALA", "AKHIL", "PAVBHAJI"] }
+    },
+    {
+      "id": 5,
+      "name": "San Rafael Hall",
+      "hint": "Home Away from Home",
+      "lat": 34.415,
+      "lng": -119.8445,
+      "radiusM": 400,
+      "sticker": "🎬",
+      "game": "emoji",
+      "content": {
+        "rounds": [
+          { "emojis": "💃🧍‍♀️🇷🇺", "answer": "ANORA" },
+          { "emojis": "🏍️⚔️⏳❤️", "answer": "MAGADHEERA" }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "Mosher Alumni Hall",
+      "hint": "Study Session",
+      "lat": 34.4137,
+      "lng": -119.8482,
+      "radiusM": 400,
+      "sticker": "📖",
+      "game": "wordsearch",
+      "content": { "words": ["STUDY", "NVP", "CUBICLE", "SLEEP", "KITCHEN", "FINALS", "OCHEM"] }
+    },
+    {
+      "id": 7,
+      "name": "Buchanan Hall",
+      "hint": "CS9",
+      "lat": 34.4148,
+      "lng": -119.8412,
+      "radiusM": 400,
+      "sticker": "💻",
+      "game": "wordle",
+      "content": { "answer": "EIGHT" }
+    },
+    {
+      "id": 8,
+      "name": "Davidson Library",
+      "hint": "4th Floor",
+      "lat": 34.4135,
+      "lng": -119.8458,
+      "radiusM": 400,
+      "sticker": "🔢",
+      "game": "twentyfour",
+      "content": { "numbers": [8, 13, 4, 3], "target": 24 }
+    },
+    {
+      "id": 9,
+      "name": "South Hall",
+      "hint": "Terrace",
+      "lat": 34.4127,
+      "lng": -119.8445,
+      "radiusM": 400,
+      "sticker": "🔭",
+      "game": "wordle",
+      "content": { "answer": "ORION" }
+    },
+    {
+      "id": 10,
+      "name": "UCEN",
+      "hint": "Fundraisers",
+      "lat": 34.4116,
+      "lng": -119.8485,
+      "radiusM": 400,
+      "sticker": "🧩",
+      "game": "connections",
+      "content": {
+        "groups": [
+          { "name": "Sports teams", "words": ["BARCELONA", "BROWNS", "LAKERS", "THUNDER"] },
+          { "name": "Places we've been", "words": ["SAN DIEGO", "SANTA BARBARA", "LOS ANGELES", "SAN JOSE"] },
+          { "name": "Movies we watched", "words": ["ANORA", "THE SUMMER I TURNED PRETTY", "TO ALL THE BOYS", "JAB WE MET"] },
+          { "name": "Games we play", "words": ["21 QUESTIONS", "WORDLE", "CONNECTIONS", "WAVELENGTH"] }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "name": "Manzanita Village",
+      "hint": "Spot",
+      "lat": 34.416,
+      "lng": -119.8522,
+      "radiusM": 500,
+      "sticker": "🍽️",
+      "game": "hangman",
+      "content": { "phrase": "DE LA GUERRA", "clue": "my favorite dining hall" }
+    },
+    {
+      "id": 12,
+      "name": "Freebirds",
+      "hint": "Quesarito",
+      "lat": 34.4129,
+      "lng": -119.8565,
+      "radiusM": 350,
+      "sticker": "🌯",
+      "game": "wordle",
+      "content": { "answer": "INSTA" }
+    },
+    {
+      "id": 13,
+      "name": "Pelican Park",
+      "hint": "Freezing Outside Bench",
+      "lat": 34.4092,
+      "lng": -119.8695,
+      "radiusM": 500,
+      "sticker": "🦢",
+      "game": "twotruths",
+      "content": {
+        "statements": [
+          { "text": "I am a second degree black belt", "lie": false },
+          { "text": "I love Pranavi Gandikota", "lie": false },
+          { "text": "You are 20 years old", "lie": true }
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "name": "The Arbor",
+      "hint": "Surprise",
+      "lat": 34.4129,
+      "lng": -119.8492,
+      "radiusM": 400,
+      "sticker": "⭐",
+      "game": "emoji",
+      "content": {
+        "rounds": [{ "emojis": "⭐🧑🎨", "answer": "TAARE ZAMEEN PAR" }]
+      }
+    },
+    {
+      "id": 15,
+      "name": "Las Vegas, NV",
+      "hint": "Allegiant",
+      "lat": 36.0908,
+      "lng": -115.183,
+      "radiusM": 4000,
+      "sticker": "🎲",
+      "game": "wordle",
+      "content": { "answer": "SCOOTER" }
+    },
+    {
+      "id": 16,
+      "name": "San Jose, CA",
+      "hint": "The Den",
+      "lat": 37.3352,
+      "lng": -121.8811,
+      "radiusM": 3500,
+      "sticker": "🍰",
+      "game": "hangman",
+      "content": { "phrase": "THE CHEESECAKE FACTORY", "clue": "lunch" }
+    },
+    {
+      "id": 17,
+      "name": "San Diego, CA",
+      "hint": "UC Socially Dead",
+      "lat": 32.8801,
+      "lng": -117.234,
+      "radiusM": 3500,
+      "sticker": "♟️",
+      "game": "chess",
+      "content": {
+        "fen": "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - - 0 1",
+        "solution": "e1e8",
+        "hint": "White to move — mate in 1. Find the checkmate!"
+      }
+    },
+    {
+      "id": 18,
+      "name": "6519 Sabado Tarde",
+      "hint": "SAbaddies",
+      "lat": 34.4103,
+      "lng": -119.8638,
+      "radiusM": 450,
+      "sticker": "🎉",
+      "game": "wordle",
+      "content": { "answer": "BEYOND" }
+    },
+    {
+      "id": 19,
+      "name": "Calabasas, CA",
+      "hint": "House Tour",
+      "lat": 34.1578,
+      "lng": -118.6384,
+      "radiusM": 4000,
+      "sticker": "🏡",
+      "game": "trivia",
+      "content": {
+        "questions": [
+          { "q": "Where did I go to high school?", "a": "AGOURA" },
+          { "q": "What's the steepest OD hike?", "a": "LADYFACE" },
+          { "q": "Where would we go to eat at lunch?", "a": "HABIT" },
+          { "q": "Which friend of mine had the ranch?", "a": "MATTEO" }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "name": "Culver City, Los Angeles",
+      "hint": "Tatari",
+      "lat": 34.0211,
+      "lng": -118.3965,
+      "radiusM": 3500,
+      "sticker": "💼",
+      "game": "hangman",
+      "content": { "phrase": "MACHINE LEARNING ENGINEER INTERN", "clue": "what's my job title" }
+    },
+    {
+      "id": 21,
+      "name": "Groton, Connecticut",
+      "hint": "Pfizer",
+      "lat": 41.3459,
+      "lng": -72.0784,
+      "radiusM": 5000,
+      "sticker": "💊",
+      "game": "cipher",
+      "content": {
+        "shift": 21,
+        "ciphertext": "CVKKT WDMOCYVT! D GJQZ TJP!",
+        "answer": "HAPPY BIRTHDAY! I LOVE YOU!",
+        "prompt": "Caesar cipher — shift of 21 (for your 21st!). Decode the secret message."
+      }
+    }
+  ]
+}

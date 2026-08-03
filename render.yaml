@@ -1,0 +1,18 @@
+# Exported Render Blueprint — creates a free web service from server/
+services:
+  - type: web
+    name: pandhi-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: SITE_PASSWORD
+        value: puffage
+      - key: CORS_ORIGIN
+        sync: false
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false

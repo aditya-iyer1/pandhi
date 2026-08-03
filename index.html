@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puffage</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Screen 1: Unlock -->
+    <section id="screen-unlock" class="screen active" aria-label="Unlock">
+      <div class="unlock-wrap">
+        <button type="button" class="lock-btn" id="lock-btn" aria-label="Unlock heart">
+          <img src="images/lock-heart.svg" alt="Locked heart" />
+        </button>
+        <p class="unlock-hint">Tap the heart to begin</p>
+      </div>
+    </section>
+
+    <!-- Screen 2: Login -->
+    <section id="screen-login" class="screen" aria-label="Login">
+      <form class="login-card" id="login-form" autocomplete="off">
+        <div class="mosaic-wrap has-image" id="mosaic-wrap">
+          <img
+            id="mosaic-img"
+            src="puffage_photos/mosaic.jpg"
+            alt="Photo mosaic — what is depicted in the picture?"
+          />
+          <div class="mosaic-lens" id="mosaic-lens" aria-hidden="true"></div>
+        </div>
+        <div class="field">
+          <label for="username">Who are you?</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="pandhi or kothi"
+            required
+            autocomplete="username"
+          />
+        </div>
+        <div class="field">
+          <label for="password">Enter Password:</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autocomplete="current-password"
+          />
+          <p class="hint">What is depicted in the picture.</p>
+        </div>
+        <p class="error-msg" id="login-error" aria-live="polite"></p>
+        <button type="submit" class="btn-primary">Enter</button>
+      </form>
+    </section>
+
+    <!-- Screen 3: Hub -->
+    <section id="screen-hub" class="screen" aria-label="Hub">
+      <p class="hub-user" id="hub-user"></p>
+      <div class="hub-grid">
+        <button type="button" class="hub-panel" data-panel="timeline">
+          <img src="images/panels/timeline.svg" alt="" />
+          <span>Timeline</span>
+        </button>
+        <button type="button" class="hub-panel" data-panel="story">
+          <img src="images/panels/story.svg" alt="" />
+          <span id="story-hub-label">?????</span>
+        </button>
+        <button type="button" class="hub-panel" data-panel="messages">
+          <img src="images/panels/messages.svg" alt="" />
+          <span>Messages / Drawings</span>
+        </button>
+        <button type="button" class="hub-panel" data-panel="games">
+          <img src="images/panels/games.svg" alt="" />
+          <span>Games</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Panel: Timeline -->
+    <section id="panel-timeline" class="panel-view" aria-label="Timeline">
+      <div class="panel-header">
+        <button type="button" class="back-btn" data-back>← Back to hub</button>
+        <h2>Timeline</h2>
+      </div>
+      <div class="timeline" id="timeline-list"></div>
+    </section>
+
+    <!-- Panel: Our Story -->
+    <section id="panel-story" class="panel-view" aria-label="Our Story">
+      <div class="panel-header">
+        <button type="button" class="back-btn" data-back>← Back to hub</button>
+        <h2 id="story-panel-title">?????</h2>
+      </div>
+      <div id="story-root"></div>
+    </section>
+
+    <!-- Panel: Messages -->
+    <section id="panel-messages" class="panel-view" aria-label="Messages and Drawings">
+      <div class="panel-header">
+        <button type="button" class="back-btn" data-back>← Back to hub</button>
+        <h2>Messages &amp; Drawings</h2>
+      </div>
+      <div class="messages-layout">
+        <form class="message-compose" id="message-form">
+          <div class="field">
+            <label for="message-text">Leave a note</label>
+            <textarea id="message-text" rows="3" placeholder="Write something sweet…" required></textarea>
+          </div>
+          <label>Draw something</label>
+          <div class="draw-toolbar">
+            <button type="button" class="color-swatch active" data-color="#3d3530" style="background:#3d3530" aria-label="Ink"></button>
+            <button type="button" class="color-swatch" data-color="#d47a86" style="background:#d47a86" aria-label="Pink"></button>
+            <button type="button" class="color-swatch" data-color="#6aaa92" style="background:#6aaa92" aria-label="Mint"></button>
+            <button type="button" class="color-swatch" data-color="#6a9bb0" style="background:#6a9bb0" aria-label="Sky"></button>
+            <button type="button" class="color-swatch" data-color="#c4a46a" style="background:#c4a46a" aria-label="Butter"></button>
+            <button type="button" class="btn-secondary" id="draw-undo">Undo</button>
+            <button type="button" class="btn-secondary" id="draw-clear">Clear</button>
+          </div>
+          <canvas id="draw-canvas" width="640" height="220"></canvas>
+          <p class="error-msg" id="message-error" aria-live="polite"></p>
+          <button type="submit" class="btn-primary">Send</button>
+        </form>
+        <div id="messages-list"></div>
+      </div>
+    </section>
+
+    <!-- Panel: Games -->
+    <section id="panel-games" class="panel-view" aria-label="Games">
+      <div class="panel-header">
+        <button type="button" class="back-btn" data-back id="games-back">← Back to hub</button>
+        <h2 id="games-title">Games</h2>
+      </div>
+      <div id="games-root"></div>
+    </section>
+
+    <!-- Birthday letter (pandhi, first login) -->
+    <div class="letter-overlay" id="letter-overlay" role="dialog" aria-modal="true" aria-labelledby="letter-title" hidden>
+      <div class="letter-paper">
+        <button type="button" class="letter-close" id="letter-close" aria-label="Close letter">×</button>
+        <h1 id="letter-title">Happy 21st Birthday Pandhi!!!</h1>
+        <div class="letter-body" id="letter-body"></div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/letter.js"></script>
+    <script src="js/hub.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/story-games.js"></script>
+    <script src="js/story.js"></script>
+    <script src="js/messages.js"></script>
+    <script src="js/games.js"></script>
+  </body>
+</html>

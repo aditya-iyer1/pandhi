@@ -367,6 +367,35 @@ img {
   border-radius: 999px;
 }
 
+.hub-counters {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: min(92vw, 520px);
+  text-align: center;
+  pointer-events: none;
+  background: rgba(255, 250, 243, 0.88);
+  border: 2px solid rgba(224, 214, 206, 0.9);
+  border-radius: 16px;
+  padding: 0.65rem 1rem;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.hub-counter {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.6vw, 1.05rem);
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.hub-counter + .hub-counter {
+  margin-top: 0.35rem;
+  color: var(--accent-deep);
+}
+
 /* —— Panel views —— */
 .panel-view {
   display: none;

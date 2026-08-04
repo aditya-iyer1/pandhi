@@ -114,6 +114,7 @@ const App = {
     if (userEl && this.username) {
       userEl.textContent = `hi, ${this.displayName()}`;
     }
+    if (typeof Hub !== 'undefined') Hub.renderCounters();
   },
 
   backToHub() {

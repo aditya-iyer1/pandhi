@@ -1367,6 +1367,7 @@ img {
 }
 
 .letter-body p {
+  white-space: pre-line;
   margin: 0 0 1.1rem;
 }
 

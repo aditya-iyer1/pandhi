@@ -1376,3 +1376,19 @@ img {
   margin-bottom: 0;
   font-weight: 700;
 }
+
+.letter-paper.popup-simple {
+  width: min(420px, 100%);
+  text-align: center;
+  padding: 3rem 2rem 2.25rem;
+}
+
+.letter-paper.popup-simple .letter-body {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-deep);
+}
+
+.letter-paper.popup-simple .letter-body p {
+  margin: 0;
+}

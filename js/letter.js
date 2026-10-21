@@ -1,4 +1,5 @@
 const LETTER_SEEN_KEY = 'puffage_anniversary_18mo_letter_seen';
+const POPUP_SEEN_KEY = 'puffage_anniversary_19mo_popup_seen';
 
 const Letter = {
   TITLE: "Happy 1.5 Year Anniversary Pandhi!!! 🤍",
@@ -42,6 +43,9 @@ const Letter = {
 
   SIGNOFF: '',
 
+  POPUP_TITLE: 'Happy 19 Months!!! 🎉',
+  POPUP_LINES: ['I love you!!!'],
+
   init() {
     document.getElementById('letter-close')?.addEventListener('click', () => this.close());
     document.getElementById('letter-overlay')?.addEventListener('click', (e) => {
@@ -54,17 +58,18 @@ const Letter = {
   },
 
   hasBeenSeen() {
-    return localStorage.getItem(LETTER_SEEN_KEY) === '1';
+    return localStorage.getItem(POPUP_SEEN_KEY) === '1';
   },
 
   markSeen() {
-    localStorage.setItem(LETTER_SEEN_KEY, '1');
+    localStorage.setItem(POPUP_SEEN_KEY, '1');
   },
 
   /** Show once for pandhi after login / returning visit. */
   maybeShow() {
     if (App.username !== 'pandhi' || this.hasBeenSeen()) return;
     this.open();
+    this.saveLetterOnce();
   },
 
   fullText() {
@@ -77,36 +82,32 @@ const Letter = {
     if (!overlay || !body) return;
 
     const title = document.getElementById('letter-title');
-    if (title) title.textContent = this.TITLE;
+    if (title) title.textContent = this.POPUP_TITLE;
 
-    body.innerHTML =
-      this.PARAGRAPHS.map((p) => `<p>${escapeHtml(p)}</p>`).join('') +
-      (this.SIGNOFF ? `<p class="signoff">${escapeHtml(this.SIGNOFF)}</p>` : '');
+    body.innerHTML = this.POPUP_LINES.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+    overlay.querySelector('.letter-paper')?.classList.add('popup-simple');
 
     overlay.hidden = false;
     // Force reflow so opacity transition runs
     void overlay.offsetWidth;
     overlay.classList.add('open');
+    Confetti.burst();
   },
 
-  async close() {
+  close() {
     const overlay = document.getElementById('letter-overlay');
     if (!overlay) return;
 
-    const alreadySeen = this.hasBeenSeen();
     this.markSeen();
-
     overlay.classList.remove('open');
     setTimeout(() => {
       overlay.hidden = true;
     }, 350);
-
-    if (!alreadySeen) {
-      await this.saveAsMessage();
-    }
   },
 
-  async saveAsMessage() {
+  /** The long letter now lives in Messages; save it once per device. */
+  async saveLetterOnce() {
+    if (localStorage.getItem(LETTER_SEEN_KEY) === '1') return;
     try {
       await App.api('/messages', {
         method: 'POST',
@@ -116,9 +117,58 @@ const Letter = {
           drawing_data_url: null,
         }),
       });
+      localStorage.setItem(LETTER_SEEN_KEY, '1');
     } catch (err) {
-      console.warn('Could not save birthday letter to messages:', err);
+      console.warn('Could not save anniversary letter to messages:', err);
     }
+  },
+};
+
+const Confetti = {
+  COLORS: ['#e8a0a8', '#f0d9a8', '#b8956a', '#ffffff', '#d96b7b', '#f7c6cd'],
+
+  burst(duration = 3500) {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:300';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    const pieces = Array.from({ length: 160 }, () => ({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 120,
+      y: canvas.height * 0.4,
+      vx: (Math.random() - 0.5) * 16,
+      vy: -Math.random() * 14 - 4,
+      size: 6 + Math.random() * 6,
+      rot: Math.random() * Math.PI,
+      vr: (Math.random() - 0.5) * 0.4,
+      color: this.COLORS[Math.floor(Math.random() * this.COLORS.length)],
+    }));
+
+    const start = performance.now();
+    const frame = (now) => {
+      const t = now - start;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = Math.max(0, Math.min(1, (duration - t) / 800));
+      for (const p of pieces) {
+        p.vy += 0.3;
+        p.vx *= 0.99;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+        ctx.restore();
+      }
+      if (t < duration) requestAnimationFrame(frame);
+      else canvas.remove();
+    };
+    requestAnimationFrame(frame);
   },
 };
 

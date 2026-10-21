@@ -1392,3 +1392,12 @@ img {
 .letter-paper.popup-simple .letter-body p {
   margin: 0;
 }
+
+.letter-paper.popup-simple .popup-photo {
+  display: block;
+  width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  margin-top: 1.25rem;
+  border-radius: 6px;
+}

@@ -84,7 +84,9 @@ const Letter = {
     const title = document.getElementById('letter-title');
     if (title) title.textContent = this.POPUP_TITLE;
 
-    body.innerHTML = this.POPUP_LINES.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+    body.innerHTML =
+      this.POPUP_LINES.map((p) => `<p>${escapeHtml(p)}</p>`).join('') +
+      '<img class="popup-photo" src="images/anniversary-19mo.jpg" alt="" />';
     overlay.querySelector('.letter-paper')?.classList.add('popup-simple');
 
     overlay.hidden = false;

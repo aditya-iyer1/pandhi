@@ -1,15 +1,20 @@
 const STORAGE_KEY = 'puffage_username';
 
+// On localhost the login lasts only for the tab (so a new tab starts at the login page);
+// on the real site it persists between visits.
+const IS_LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
+const loginStore = IS_LOCAL ? sessionStorage : localStorage;
+
 const App = {
   username: null,
 
   getUsername() {
-    return localStorage.getItem(STORAGE_KEY);
+    return loginStore.getItem(STORAGE_KEY);
   },
 
   setUsername(name) {
     const normalized = String(name).toLowerCase().trim();
-    localStorage.setItem(STORAGE_KEY, normalized);
+    loginStore.setItem(STORAGE_KEY, normalized);
     this.username = normalized;
   },
 
@@ -21,7 +26,7 @@ const App = {
   },
 
   clearUsername() {
-    localStorage.removeItem(STORAGE_KEY);
+    loginStore.removeItem(STORAGE_KEY);
     this.username = null;
   },
 

@@ -79,7 +79,7 @@ const App = {
     }, delayMs);
   },
 
-  PANELS: ['timeline', 'story', 'messages', 'games'],
+  PANELS: ['timeline', 'journey', 'story', 'messages', 'games'],
 
   showPanel(name) {
     document.querySelectorAll('.screen').forEach((el) => {
@@ -95,6 +95,7 @@ const App = {
   renderPanel(name) {
     this.showPanel(name);
     if (name === 'timeline' && typeof Timeline !== 'undefined') Timeline.load();
+    if (name === 'journey' && typeof Journey !== 'undefined') Journey.load();
     if (name === 'story' && typeof Story !== 'undefined') Story.load();
     if (name === 'messages' && typeof Messages !== 'undefined') Messages.load();
     if (name === 'games' && typeof Games !== 'undefined') Games.load();
@@ -152,6 +153,8 @@ const App = {
   init() {
     this.username = this.getUsername();
 
+    document.getElementById('story-toggle')?.addEventListener('click', () => this.openPanel('story'));
+
     document.querySelectorAll('[data-back]').forEach((btn) => {
       btn.addEventListener('click', () => {
         this.backToHub();
@@ -164,6 +167,7 @@ const App = {
     if (typeof Hub !== 'undefined') Hub.init();
     if (typeof Timeline !== 'undefined') Timeline.init();
     if (typeof Story !== 'undefined') Story.init();
+    if (typeof Journey !== 'undefined') Journey.init();
     if (typeof Messages !== 'undefined') Messages.init();
 
     window.addEventListener('hashchange', () => this.handleHash());
@@ -177,7 +181,6 @@ const App = {
       }
       this.handleHash();
       if (typeof Letter !== 'undefined') Letter.maybeShow();
-      if (typeof Story !== 'undefined') Story.refreshHubLabel();
     }
   },
 };

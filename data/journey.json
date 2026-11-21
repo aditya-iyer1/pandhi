@@ -1,0 +1,10 @@
+{
+  "title": "Our Journey",
+  "cities": [
+    { "name": "San Diego", "lat": 32.7157, "lng": -117.1611 },
+    { "name": "Los Angeles", "lat": 34.0522, "lng": -118.2437 },
+    { "name": "Santa Barbara", "lat": 34.4208, "lng": -119.6982 },
+    { "name": "San Jose", "lat": 37.3382, "lng": -121.8863 },
+    { "name": "San Francisco", "lat": 37.7749, "lng": -122.4194 }
+  ]
+}

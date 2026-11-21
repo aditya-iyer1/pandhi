@@ -1,6 +1,6 @@
 # Puffage
 
-A free birthday gift site for two players (`pandhi` & `kothi`): unlock → password gate → hub with Timeline, **Our Story** map game, Messages/Drawings, and Games (links to our daily games + a shared log of our daily stats).
+A free birthday gift site for two players (`pandhi` & `kothi`): unlock → password gate → hub with Timeline, **Our Journey** (US map that colors in where we've been), Messages/Drawings, and Games. The original **Our Story** map game is archived behind the globe button under the theme toggle (links to our daily games + a shared log of our daily stats).
 
 **Stack:** static HTML/CSS/JS on GitHub Pages · Node/Express on Render · Turso (hosted SQLite)
 
@@ -27,6 +27,8 @@ npx --yes serve .
 ```
 
 Open the printed URL. On localhost, `js/config.js` talks to `http://localhost:3000`.
+
+**Adding a place to Our Journey:** add `{ "name": "…", "lat": 0, "lng": 0 }` to `data/journey.json`; the map colors in around it.
 
 **Login:** username `pandhi` or `kothi123` (displays as “kothi”) · password `puffage` (case-insensitive)
 

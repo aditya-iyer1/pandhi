@@ -21,7 +21,7 @@ const Story = {
       ]);
       this.data = dataRes;
       this.progress = progress;
-      this.updateHubLabel();
+      this.updateTitle();
       this.render();
     } catch (err) {
       console.error(err);
@@ -29,14 +29,12 @@ const Story = {
     }
   },
 
-  updateHubLabel() {
-    const label = document.getElementById('story-hub-label');
+  updateTitle() {
     const title = document.getElementById('story-panel-title');
     const unlocked = this.progress?.titleUnlocked;
     const text = unlocked
       ? this.data?.titleUnlocked || 'Our Story'
       : this.data?.titleLocked || '?????';
-    if (label) label.textContent = text;
     if (title) title.textContent = text;
   },
 
@@ -309,7 +307,7 @@ const Story = {
         body: JSON.stringify({ username: App.username }),
       });
       this.progress = result;
-      this.updateHubLabel();
+      this.updateTitle();
 
       const loc = this.locationById(id);
       if (!this.markers[id]) this.addCompletedMarker(loc);
@@ -364,19 +362,5 @@ const Story = {
       layer.hidden = true;
       layer.innerHTML = '';
     }, 4000);
-  },
-
-  async refreshHubLabel() {
-    try {
-      const [data, progress] = await Promise.all([
-        this.data ? Promise.resolve(this.data) : fetch('data/story.json').then((r) => r.json()),
-        App.api('/story'),
-      ]);
-      this.data = data;
-      this.progress = progress;
-      this.updateHubLabel();
-    } catch {
-      // keep ?????
-    }
   },
 };

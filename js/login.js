@@ -122,7 +122,6 @@ const Login = {
     setTimeout(() => {
       App.handleHash();
       if (typeof Letter !== 'undefined') Letter.maybeShow();
-      if (typeof Story !== 'undefined') Story.refreshHubLabel();
     }, 400);
   },
 

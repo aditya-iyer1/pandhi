@@ -1378,26 +1378,71 @@ img {
 }
 
 .letter-paper.popup-simple {
-  width: min(420px, 100%);
+  position: relative;
+  z-index: 1;
+  width: min(460px, 100%);
   text-align: center;
   padding: 3rem 2rem 2.25rem;
 }
 
 .letter-paper.popup-simple .letter-body {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--accent-deep);
+  overflow-wrap: anywhere;
 }
 
 .letter-paper.popup-simple .letter-body p {
-  margin: 0;
+  margin: 0 0 0.6rem;
 }
 
-.letter-paper.popup-simple .popup-photo {
-  display: block;
-  width: 100%;
-  max-height: 50vh;
-  object-fit: contain;
-  margin-top: 1.25rem;
-  border-radius: 6px;
+.letter-paper.popup-simple .letter-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Endless photo marquee behind the anniversary popup */
+.photo-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.photo-strip.top {
+  top: 3vh;
+}
+
+.photo-strip.bottom {
+  bottom: 3vh;
+}
+
+.photo-track {
+  display: flex;
+  width: max-content;
+  animation: photo-scroll-left 70s linear infinite;
+}
+
+.photo-strip.bottom .photo-track {
+  animation-name: photo-scroll-right;
+}
+
+.photo-track img {
+  height: clamp(110px, 24vh, 240px);
+  width: auto;
+  margin-right: 14px;
+  border-radius: 8px;
+  border: 3px solid #fffaf3;
+  box-shadow: 0 6px 18px rgba(61, 53, 48, 0.3);
+  flex: none;
+}
+
+@keyframes photo-scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes photo-scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }

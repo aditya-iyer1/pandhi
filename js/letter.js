@@ -1,5 +1,4 @@
 const LETTER_SEEN_KEY = 'puffage_anniversary_18mo_letter_seen';
-const POPUP_SEEN_KEY = 'puffage_anniversary_19mo_popup_seen';
 
 const Letter = {
   TITLE: "Happy 1.5 Year Anniversary Pandhi!!! 🤍",
@@ -43,8 +42,13 @@ const Letter = {
 
   SIGNOFF: '',
 
-  POPUP_TITLE: 'Happy 19 Months!!! 🎉',
-  POPUP_LINES: ['I love you!!!'],
+  POPUP_TITLE: 'Happy 20 months bangarammm!!!!',
+  POPUP_LINES: [
+    "I can't believe we're relationship super-uncs now!!",
+    'I love you sooooooooooooooo much!!',
+  ],
+
+  PHOTO_COUNT: 27,
 
   init() {
     document.getElementById('letter-close')?.addEventListener('click', () => this.close());
@@ -57,17 +61,9 @@ const Letter = {
     });
   },
 
-  hasBeenSeen() {
-    return localStorage.getItem(POPUP_SEEN_KEY) === '1';
-  },
-
-  markSeen() {
-    localStorage.setItem(POPUP_SEEN_KEY, '1');
-  },
-
-  /** Show once for pandhi after login / returning visit. */
+  /** Show for pandhi on every login / launch. */
   maybeShow() {
-    if (App.username !== 'pandhi' || this.hasBeenSeen()) return;
+    if (App.username !== 'pandhi') return;
     this.open();
     this.saveLetterOnce();
   },
@@ -84,10 +80,9 @@ const Letter = {
     const title = document.getElementById('letter-title');
     if (title) title.textContent = this.POPUP_TITLE;
 
-    body.innerHTML =
-      this.POPUP_LINES.map((p) => `<p>${escapeHtml(p)}</p>`).join('') +
-      '<img class="popup-photo" src="images/anniversary-19mo.jpg" alt="" />';
+    body.innerHTML = this.POPUP_LINES.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
     overlay.querySelector('.letter-paper')?.classList.add('popup-simple');
+    this.renderStrips(overlay);
 
     overlay.hidden = false;
     // Force reflow so opacity transition runs
@@ -100,11 +95,32 @@ const Letter = {
     const overlay = document.getElementById('letter-overlay');
     if (!overlay) return;
 
-    this.markSeen();
     overlay.classList.remove('open');
     setTimeout(() => {
       overlay.hidden = true;
+      overlay.querySelectorAll('.photo-strip').forEach((el) => el.remove());
     }, 350);
+  },
+
+  /** Two endless horizontal photo marquees (top and bottom), scrolling in opposite directions. */
+  renderStrips(overlay) {
+    overlay.querySelectorAll('.photo-strip').forEach((el) => el.remove());
+    const photos = Array.from({ length: this.PHOTO_COUNT }, (_, i) =>
+      `images/anniversary-20mo/${String(i + 1).padStart(2, '0')}.jpg`
+    );
+    const rows = [
+      { cls: 'top', photos: photos.filter((_, i) => i % 2 === 0) },
+      { cls: 'bottom', photos: photos.filter((_, i) => i % 2 === 1) },
+    ];
+    for (const row of rows) {
+      const imgs = row.photos.map((src) => `<img src="${src}" alt="" />`).join('');
+      const strip = document.createElement('div');
+      strip.className = `photo-strip ${row.cls}`;
+      strip.setAttribute('aria-hidden', 'true');
+      // Content is duplicated so translating by -50% loops seamlessly.
+      strip.innerHTML = `<div class="photo-track">${imgs}${imgs}</div>`;
+      overlay.prepend(strip);
+    }
   },
 
   /** The long letter now lives in Messages; save it once per device. */

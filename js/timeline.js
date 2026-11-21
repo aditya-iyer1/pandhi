@@ -3,7 +3,16 @@ const Timeline = {
   observer: null,
 
   init() {
-    // no-op; load on panel open
+    const btn = document.getElementById('timeline-to-top');
+    if (!btn) return;
+    const update = () => btn.classList.toggle('visible', window.scrollY > 400);
+    this.updateToTop = update;
+    window.addEventListener('scroll', update, { passive: true });
+    btn.addEventListener('click', () => {
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+    update();
   },
 
   async load() {
@@ -40,6 +49,7 @@ const Timeline = {
       );
       list.querySelectorAll('.timeline-entry').forEach((el) => this.observer.observe(el));
       this.loaded = true;
+      this.updateToTop?.();
     } catch (err) {
       list.innerHTML = `<p class="empty-state">Could not load timeline.</p>`;
     }

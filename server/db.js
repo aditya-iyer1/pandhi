@@ -32,14 +32,15 @@ async function initDb() {
     )
   `);
   await db.execute(`
-    CREATE TABLE IF NOT EXISTS games (
+    CREATE TABLE IF NOT EXISTS game_logs (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL,
-      status TEXT NOT NULL,
-      starter_username TEXT NOT NULL,
+      game TEXT NOT NULL,
+      play_date TEXT NOT NULL,
       data_json TEXT NOT NULL,
+      logged_by TEXT NOT NULL,
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
-      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE (game, play_date)
     )
   `);
   await db.execute(`

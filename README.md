@@ -1,6 +1,6 @@
 # Puffage
 
-A free birthday gift site for two players (`pandhi` & `kothi`): unlock → password gate → hub with Timeline, **Our Story** map game, Messages/Drawings, and Games (20 Questions + Wavelength).
+A free birthday gift site for two players (`pandhi` & `kothi`): unlock → password gate → hub with Timeline, **Our Story** map game, Messages/Drawings, and Games (links to our daily games + a shared log of our daily stats).
 
 **Stack:** static HTML/CSS/JS on GitHub Pages · Node/Express on Render · Turso (hosted SQLite)
 
@@ -101,9 +101,8 @@ Referenced from `index.html` as the login-screen mosaic.
 |--------|------|--------|
 | `POST` | `/login` | `{ username, password }` |
 | `GET` / `POST` | `/messages` | History / new note + optional drawing data URL |
-| `GET` / `POST` | `/games` | List / create |
-| `GET` | `/games/:id` | Full game + `data_json` |
-| `POST` | `/games/:id/turn` | Game-specific actions |
+| `GET` | `/game-logs` | All daily game stat entries |
+| `PUT` / `DELETE` | `/game-logs/:game/:date` | Upsert / clear one game's stats for a date (`YYYY-MM-DD`) |
 | `GET` | `/health` | Liveness |
 
 Timeline and albums are **static JSON** on the frontend (not API).

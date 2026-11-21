@@ -92,7 +92,7 @@ const App = {
     if (name === 'timeline' && typeof Timeline !== 'undefined') Timeline.load();
     if (name === 'story' && typeof Story !== 'undefined') Story.load();
     if (name === 'messages' && typeof Messages !== 'undefined') Messages.load();
-    if (name === 'games' && typeof Games !== 'undefined') Games.showLobby();
+    if (name === 'games' && typeof Games !== 'undefined') Games.load();
   },
 
   openPanel(name) {
@@ -106,9 +106,6 @@ const App = {
   },
 
   showHub() {
-    if (typeof Games !== 'undefined' && Games.stopPolling) {
-      Games.stopPolling();
-    }
     this.showScreen('screen-hub');
     const userEl = document.getElementById('hub-user');
     if (userEl && this.username) {
@@ -152,10 +149,6 @@ const App = {
 
     document.querySelectorAll('[data-back]').forEach((btn) => {
       btn.addEventListener('click', () => {
-        if (btn.id === 'games-back' && typeof Games !== 'undefined' && Games.isInGameView?.()) {
-          Games.showLobby();
-          return;
-        }
         this.backToHub();
       });
     });
@@ -167,7 +160,6 @@ const App = {
     if (typeof Timeline !== 'undefined') Timeline.init();
     if (typeof Story !== 'undefined') Story.init();
     if (typeof Messages !== 'undefined') Messages.init();
-    if (typeof Games !== 'undefined') Games.init();
 
     window.addEventListener('hashchange', () => this.handleHash());
 

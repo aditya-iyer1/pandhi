@@ -706,131 +706,150 @@ img {
   padding: 2rem 1rem;
 }
 
-/* Games */
-.games-lobby {
+/* Games — daily stat log */
+.gamelog {
   max-width: 640px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
-.game-card {
+.gamelog-date {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+}
+
+.gamelog-date input {
+  border: 2px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--ink);
+}
+
+.gamelog-card {
   background: rgba(255, 255, 255, 0.65);
   border: 2px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 1.15rem 1.25rem;
+  padding: 1.1rem 1.25rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.gamelog-head {
+  display: flex;
   align-items: center;
   gap: 0.75rem;
-  justify-content: space-between;
 }
 
-.game-card h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1.2rem;
-}
-
-.game-card p {
+.gamelog-head h3 {
   margin: 0;
-  color: var(--ink-muted);
-  font-size: 0.9rem;
-}
-
-.game-card .game-info {
+  font-size: 1.25rem;
   flex: 1;
-  min-width: 180px;
 }
 
-.game-play {
-  max-width: 640px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.game-status {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: var(--radius);
-  border: 2px solid var(--panel-border);
-  padding: 1rem 1.15rem;
-}
-
-.game-history {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.turn-bubble {
-  background: #fff;
-  border: 2px solid var(--panel-border);
-  border-radius: 14px;
-  padding: 0.75rem 1rem;
-}
-
-.turn-bubble .who {
-  font-weight: 700;
+.logged-badge {
   font-size: 0.85rem;
-  color: var(--ink-muted);
-  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: #4d8a74;
+  background: rgba(168, 212, 196, 0.45);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
 }
 
-.game-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.55);
-  padding: 1.15rem;
-  border-radius: var(--radius);
-  border: 2px solid var(--mint);
+.play-link {
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
 }
 
-.response-btns {
+.play-link:hover {
+  background: var(--accent-deep);
+}
+
+.gamelog-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem 1rem;
+  align-items: flex-end;
 }
 
-.response-btns button {
-  background: var(--sky);
-  color: var(--ink);
+.gamelog-form .field {
+  flex: 1;
+  min-width: 140px;
+}
+
+.gamelog-form .field-label {
   font-weight: 700;
-  padding: 0.5rem 0.85rem;
+  font-size: 1rem;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pill-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 2px solid var(--panel-border);
+  background: #fff;
   border-radius: 999px;
-  font-size: 0.9rem;
+  padding: 0.35rem 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.response-btns button.got-it {
-  background: var(--mint);
+.pill-group label:has(input:checked) {
+  border-color: var(--accent);
+  background: rgba(232, 160, 168, 0.2);
 }
 
-.replay-list {
-  margin-top: 1.5rem;
+.pill-group input {
+  accent-color: var(--accent-deep);
 }
 
-.replay-list h3 {
-  margin: 0 0 0.75rem;
+.gamelog-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-basis: 100%;
 }
 
-.replay-item {
+.gamelog-actions .error-msg {
+  text-align: left;
+  flex: 1;
+}
+
+.gamelog-history summary {
+  cursor: pointer;
+  color: var(--ink-muted);
+  font-weight: 700;
+}
+
+.gamelog-history ul {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.gamelog-history li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 0.85rem;
+  gap: 1rem;
+  padding: 0.35rem 0;
   border-bottom: 1px solid var(--panel-border);
-  width: 100%;
-  text-align: left;
-  color: inherit;
-}
-
-.replay-item:hover {
-  background: rgba(255, 255, 255, 0.5);
 }
 
 .hidden {

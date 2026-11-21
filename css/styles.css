@@ -16,6 +16,96 @@
   --shadow: rgba(61, 53, 48, 0.12);
   --radius: 18px;
   --font: 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* theme surfaces */
+  --surface: #fff;
+  --surface-rgb: 255, 255, 255;
+  --ink-rgb: 61, 53, 48;
+  --page-bg: #fdf3ec;
+  --bg-unlock: #f0eeed;
+  --paper-top: #fffaf3;
+  --paper-bot: #f7efe3;
+  --badge-ink: #4d8a74;
+  --tile-1: #dd8591;
+  --tile-2: #7ba3b8;
+  --tile-3: #7dbaa3;
+  --tile-4: #e2bd70;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #171314;
+  --bg-warm: #1f191b;
+  --bg-soft: #2a2326;
+  --ink: #f3ebe6;
+  --ink-muted: #b5a89f;
+  --mint: #3f6b5c;
+  --sky: #3f6076;
+  --butter: #7a6330;
+  --lavender: #5b4b6e;
+  --panel-border: #4a3f43;
+  --shadow: rgba(0, 0, 0, 0.45);
+
+  --surface: #262023;
+  --surface-rgb: 38, 32, 35;
+  --ink-rgb: 243, 235, 230;
+  --page-bg: #1d181a;
+  --bg-unlock: #171314;
+  --paper-top: #2b2427;
+  --paper-bot: #241e21;
+  --badge-ink: #8fd0b8;
+  --tile-1: #9a4f5b;
+  --tile-2: #44687c;
+  --tile-3: #43796a;
+  --tile-4: #8c6f26;
+  color-scheme: dark;
+}
+
+/* Dark map tiles for the Our Story map */
+:root[data-theme='dark'] .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9);
+}
+
+/* Light page background behind every sub-page */
+.panel-view {
+  background: var(--page-bg);
+}
+
+/* Light / dark toggle, fixed top right on every screen */
+.theme-toggle {
+  position: fixed;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  background: rgba(var(--surface-rgb), 0.85);
+  border: 2px solid var(--panel-border);
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.2s ease, background 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.theme-toggle .icon-sun,
+:root[data-theme='dark'] .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-sun {
+  display: block;
 }
 
 *,
@@ -82,7 +172,7 @@ img {
 #screen-unlock {
   align-items: center;
   justify-content: center;
-  background: #f0eeed;
+  background: var(--bg-unlock);
 }
 
 .unlock-wrap {
@@ -275,7 +365,7 @@ img {
   border-radius: 12px;
   padding: 0.7rem 0.9rem;
   font-size: 1rem;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   outline: none;
   transition: border-color 0.2s;
@@ -362,22 +452,22 @@ img {
 }
 
 .hub-panel:nth-child(1) {
-  background: #dd8591;
+  background: var(--tile-1);
 }
 .hub-panel:nth-child(2) {
-  background: #7ba3b8;
+  background: var(--tile-2);
 }
 .hub-panel:nth-child(3) {
-  background: #7dbaa3;
+  background: var(--tile-3);
 }
 .hub-panel:nth-child(4) {
-  background: #e2bd70;
+  background: var(--tile-4);
 }
 
 .hub-panel:hover {
   transform: scale(1.03);
   z-index: 2;
-  border-color: rgba(61, 53, 48, 0.25);
+  border-color: rgba(var(--ink-rgb), 0.25);
   box-shadow: 0 12px 32px var(--shadow);
 }
 
@@ -395,11 +485,11 @@ img {
 .hub-user {
   position: absolute;
   top: 0.75rem;
-  right: 1rem;
+  right: 4.25rem;
   z-index: 5;
   font-size: 0.9rem;
   color: var(--ink-muted);
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(var(--surface-rgb), 0.65);
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
 }
@@ -413,8 +503,8 @@ img {
   width: min(92vw, 520px);
   text-align: center;
   pointer-events: none;
-  background: rgba(255, 250, 243, 0.88);
-  border: 2px solid rgba(224, 214, 206, 0.9);
+  background: rgba(var(--surface-rgb), 0.88);
+  border: 2px solid var(--panel-border);
   border-radius: 16px;
   padding: 0.65rem 1rem;
   box-shadow: 0 8px 24px var(--shadow);
@@ -517,7 +607,7 @@ img {
   height: 12px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid #fff;
+  border: 2px solid var(--surface);
   box-shadow: 0 0 0 2px var(--accent);
 }
 
@@ -566,7 +656,7 @@ img {
   border-radius: 14px;
   overflow: hidden;
   border: 2px solid var(--panel-border);
-  background: #fff;
+  background: var(--surface);
   transition: transform 0.2s, box-shadow 0.2s;
   padding: 0;
   text-align: left;
@@ -621,7 +711,7 @@ img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(var(--surface-rgb), 0.9);
   color: var(--ink);
   font-size: 1.5rem;
   font-weight: 700;
@@ -641,7 +731,7 @@ img {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(var(--surface-rgb), 0.9);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -663,7 +753,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(var(--surface-rgb), 0.55);
   padding: 1.25rem;
   border-radius: var(--radius);
   border: 2px solid var(--panel-border);
@@ -701,7 +791,7 @@ img {
 
 .message-featured,
 .message-item {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--surface-rgb), 0.7);
   border: 2px solid var(--panel-border);
   border-radius: var(--radius);
   padding: 1rem 1.15rem;
@@ -766,12 +856,12 @@ img {
   border-radius: 12px;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
 }
 
 .gamelog-card {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(var(--surface-rgb), 0.65);
   border: 2px solid var(--panel-border);
   border-radius: var(--radius);
   padding: 1.1rem 1.25rem;
@@ -795,7 +885,7 @@ img {
 .logged-badge {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #4d8a74;
+  color: var(--badge-ink);
   background: rgba(168, 212, 196, 0.45);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
@@ -842,7 +932,7 @@ img {
   align-items: center;
   gap: 0.35rem;
   border: 2px solid var(--panel-border);
-  background: #fff;
+  background: var(--surface);
   border-radius: 999px;
   padding: 0.35rem 0.8rem;
   font-weight: 700;
@@ -925,7 +1015,7 @@ img {
 }
 
 .story-hint-card {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--surface-rgb), 0.7);
   border: 2px solid var(--panel-border);
   border-radius: var(--radius);
   padding: 1rem 1.15rem;
@@ -1008,7 +1098,7 @@ img {
   width: min(560px, 100%);
   max-height: min(90vh, 800px);
   overflow-y: auto;
-  background: #fffaf3;
+  background: var(--paper-top);
   border-radius: var(--radius);
   border: 2px solid var(--panel-border);
   padding: 1.5rem 1.25rem 1.25rem;
@@ -1090,7 +1180,7 @@ img {
   font-weight: 700;
   font-size: 1.25rem;
   text-transform: uppercase;
-  background: #fff;
+  background: var(--surface);
 }
 
 .sg-wordle-cell.correct {
@@ -1144,7 +1234,7 @@ img {
   background: var(--mint);
 }
 .sg-key.miss {
-  background: #ccc;
+  background: var(--panel-border);
 }
 
 .sg-ws-list {
@@ -1176,7 +1266,7 @@ img {
   font-size: clamp(0.55rem, 2vw, 0.85rem);
   font-weight: 700;
   border: 1px solid var(--panel-border);
-  background: #fff;
+  background: var(--surface);
   padding: 0;
   min-width: 0;
 }
@@ -1236,7 +1326,7 @@ img {
 .sg-conn-tile {
   padding: 0.75rem 0.5rem;
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface);
   border: 2px solid var(--panel-border);
   font-weight: 700;
   font-size: 0.8rem;
@@ -1270,7 +1360,7 @@ img {
   margin: 0.4rem 0;
   border-radius: 12px;
   border: 2px solid var(--panel-border);
-  background: #fff;
+  background: var(--surface);
   font-weight: 700;
 }
 
@@ -1314,7 +1404,7 @@ img {
   letter-spacing: 0.04em;
   text-align: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--surface-rgb), 0.7);
   border-radius: 12px;
 }
 
@@ -1383,7 +1473,7 @@ img {
   max-height: min(90vh, 820px);
   overflow-y: auto;
   background:
-    linear-gradient(180deg, #fffaf3 0%, #f7efe3 100%);
+    linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bot) 100%);
   border: 1px solid rgba(184, 149, 106, 0.35);
   box-shadow: 0 20px 60px rgba(61, 53, 48, 0.35);
   padding: 2.5rem 2.25rem 2rem;
@@ -1399,14 +1489,14 @@ img {
   border-radius: 50%;
   font-size: 1.35rem;
   line-height: 1;
-  color: rgba(61, 53, 48, 0.28);
+  color: rgba(var(--ink-rgb), 0.28);
   font-weight: 700;
   transition: color 0.2s, background 0.2s;
 }
 
 .letter-close:hover {
-  color: rgba(61, 53, 48, 0.65);
-  background: rgba(61, 53, 48, 0.06);
+  color: rgba(var(--ink-rgb), 0.65);
+  background: rgba(var(--ink-rgb), 0.06);
 }
 
 .letter-paper h1 {

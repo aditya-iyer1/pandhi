@@ -903,7 +903,7 @@ img {
 
 /* Games — daily stat log */
 .gamelog {
-  max-width: 640px;
+  max-width: 1080px;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -925,6 +925,145 @@ img {
   font-size: 1rem;
   background: var(--surface);
   color: var(--ink);
+}
+
+.gamelog-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+@media (max-width: 820px) {
+  .gamelog-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.gamelog-chart {
+  --chart-a: #d47a86;
+  --chart-b: #4f9aaa;
+  background: rgba(var(--surface-rgb), 0.65);
+  border: 2px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+:root[data-theme='dark'] .gamelog-chart {
+  --chart-a: #f0a0aa;
+  --chart-b: #7fc4d4;
+}
+
+.gamelog-chart h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.chart-empty {
+  margin: auto;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+}
+
+.chart-svg .grid {
+  stroke: var(--panel-border);
+  stroke-width: 1;
+}
+
+.chart-svg .tick {
+  fill: var(--ink-muted);
+  font-size: 10px;
+  font-family: var(--font);
+  font-weight: 600;
+}
+
+.chart-svg .tick.c-a { fill: var(--chart-a); }
+.chart-svg .tick.c-b { fill: var(--chart-b); }
+.chart-svg .line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.chart-svg .line.c-a { stroke: var(--chart-a); }
+.chart-svg .line.c-b { stroke: var(--chart-b); }
+.chart-svg .pt { stroke: var(--surface); stroke-width: 1.5; }
+.chart-svg .pt.c-a, .chart-svg .bar.c-a { fill: var(--chart-a); }
+.chart-svg .pt.c-b, .chart-svg .bar.c-b { fill: var(--chart-b); }
+
+.chart-legend {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.swatch.c-a, .swatch.bad { background: var(--chart-a); }
+.swatch.c-b { background: var(--chart-b); }
+.swatch.good { background: var(--mint); }
+
+.chart-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0.5rem 0;
+}
+
+.chart-dots .dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+.chart-dots .dot.good { background: var(--mint); }
+.chart-dots .dot.bad { background: var(--chart-a); }
+
+.chart-stats {
+  display: flex;
+  gap: 0.5rem;
+  margin: auto 0 0;
+  padding-top: 0.4rem;
+}
+
+.chart-stats div {
+  flex: 1;
+  text-align: center;
+  background: rgba(var(--ink-rgb), 0.05);
+  border-radius: 12px;
+  padding: 0.4rem 0.25rem;
+}
+
+.chart-stats dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.chart-stats dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .gamelog-card {

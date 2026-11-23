@@ -90,10 +90,9 @@ const Games = {
   logs: [],
   date: null,
 
+  /** Today's date in Eastern time, so both of us roll over to a new day together. */
   todayStr() {
-    const d = new Date();
-    const pad = (n) => String(n).padStart(2, '0');
-    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(new Date());
   },
 
   prettyDate(str) {

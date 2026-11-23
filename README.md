@@ -28,7 +28,7 @@ npx --yes serve .
 
 Open the printed URL. On localhost, `js/config.js` talks to `http://localhost:3000`.
 
-**Adding a place to Our Journey:** add `{ "name": "…", "lat": 0, "lng": 0 }` to `data/journey.json`; the map colors in around it.
+**Adding a place to Our Journey:** add `{ "name": "…", "lat": 0, "lng": 0, "who": "me|her|both|together" }` to `places` in `data/journey.json`. Blue = me, pink = her, yellow = both of us (separately), shiny purple = together.
 
 **Login:** username `pandhi` or `kothi123` (displays as “kothi”) · password `puffage` (case-insensitive)
 
